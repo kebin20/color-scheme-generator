@@ -1,6 +1,7 @@
-// HTML Components
+//Global variable
 const numbers = [1, 2, 3, 4, 5];
 
+// HTML Components
 const colorStrips = numbers.map((number) =>
   document.getElementById(`color-strip-${number}`)
 );
@@ -33,7 +34,6 @@ function fetchColor() {
         colorStrips[index].style.backgroundColor = color;
         hexNumberDisplays[index].textContent = color;
       });
-      console.log(data);
     });
 }
 
@@ -45,44 +45,3 @@ getColorBtn.addEventListener("click", () => {
 // for(i=0; i < 5; i++) {
 //   colorStrips[i].style.backgroundColor = colorData[i]
 // }
-
-//Display Initial Colour
-// displayInitialColor(hexValue, hexNumber);
-// function displayInitialColor(hexValue, hexNumber) {
-//   colorStrip1.style.backgroundColor = hexValue;
-//   hexNumberDisplay1.textContent = hexNumber.replace("", "#");
-// }
-
-//ALTERNATIVE SOLUTION TO EXPERIMENT
-// let color = {
-//   getHex: function () {
-//     let hex = document.getElementById("color-picker").value;
-//     let justHexNumber = hex.replace("#", "");
-//     return justHexNumber;
-//   },
-
-//   fetchColor: function (hex) {
-//     fetch(`https://www.thecolorapi.com/id?hex=${hex}`, {
-//       method: "GET",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => console.log(data));
-//   },
-
-//   getColorHtml: function (data) {},
-
-//   displayColor: function () {
-//     this.fetchColor(this.getHex);
-//   },
-// };
-
-// TEST PURPOSES
-// let color = document.getElementById("colorPicker").value;
-//   let justCn = color.replace("#", "");
-
-// const btn = document.getElementById("btn");
-
-// btn.addEventListener("click", () => {
-
-//   console.log(justCn);
-// });
