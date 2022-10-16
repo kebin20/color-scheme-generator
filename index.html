@@ -13,7 +13,8 @@
     <header>
         <form action="#">
             <label for="color-picker"></label>
-            <input name="color-picker" id="color-picker " class="color-picker " type="color">
+
+            <input name="color-picker" id="color-picker" class="color-picker" type="color" />
 
             <label for="scheme-select"></label>
             <select name="scheme" id="scheme-select" class="scheme-select">
@@ -26,35 +27,44 @@
                 <option value="triad">Triad</option>
                 <option value="quad">Quad</option>
             </select>
+            <button id="get-color-scheme" class="get-color-scheme" type="button">Get color scheme</button>
 
-            <button id="get-color-scheme" class="get-color-scheme">Get color scheme</button>
         </form>
+
     </header>
 
     <div class="color-container">
         <div class="color-column">
-            <div class="color-strip"></div>
-            <div class="color-hex">435</div>
+            <div class="color-strip" id="color-strip-one"></div>
+            <div class="hex-number" id="hex-number-one"></div>
         </div>
         <div class="color-column">
-            <div class="color-strip"></div>
-            <div class="color-hex">123</div>
+            <div class="color-strip" id="color-strip-two"></div>
+            <div class="hex-number" id="hex-number-two"></div>
         </div>
         <div class="color-column">
-            <div class="color-strip"></div>
-            <div class="color-hex">345</div>
+            <div class="color-strip" id="color-strip-three"></div>
+            <div class="hex-number" id="hex-number-three"></div>
         </div>
         <div class="color-column">
-            <div class="color-strip"></div>
-            <div class="color-hex">123</div>
+            <div class="color-strip" id="color-strip-four"></div>
+            <div class="hex-number" id="hex-number-four"></div>
         </div>
         <div class="color-column">
-            <div class="color-strip"></div>
-            <div class="color-hex">123</div>
+            <div class="color-strip" id="color-strip-five"></div>
+            <div class="hex-number" id="hex-number-five"></div>
         </div>
     </div>
+
+
+
+
 
     <script src="app.js"></script>
 </body>
 
 </html>
+
+<!-- TEST -->
+<!-- <button id="btn">Press</button> -->
+<!-- <input type="color" id="colorPicker"/> -->
