@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Scheme Generator</title>
     <link rel="stylesheet" href="style.css">
+    <!--   Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
+      <h1>Pick your color scheme!</h1>
         <form action="#">
             <label for="color-picker"></label>
-
             <input name="color-picker" id="color-picker" class="color-picker" type="color" />
 
             <label for="scheme-select"></label>
@@ -27,12 +31,13 @@
                 <option value="triad">Triad</option>
                 <option value="quad">Quad</option>
             </select>
+            
             <button id="get-color-scheme" class="get-color-scheme" type="button">Get color scheme</button>
-
         </form>
 
     </header>
 
+  <main>
     <div class="color-container">
         <div class="color-column">
             <div class="color-strip" id="color-strip-1"></div>
@@ -55,16 +60,9 @@
             <div class="hex-number" id="hex-number-5"></div>
         </div>
     </div>
-
-
-
-
-
+</main>
     <script src="app.js"></script>
 </body>
 
 </html>
 
-<!-- TEST -->
-<!-- <button id="btn">Press</button> -->
-<!-- <input type="color" id="colorPicker"/> -->

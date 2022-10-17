@@ -2,17 +2,17 @@
 const numbers = [1, 2, 3, 4, 5];
 
 // HTML Components
-const colorStrips = numbers.map((number) =>
+const colorStrips = numbers.map(number =>
   document.getElementById(`color-strip-${number}`)
 );
-const hexNumberDisplays = numbers.map((number) =>
+const hexNumberDisplays = numbers.map(number =>
   document.getElementById(`hex-number-${number}`)
 );
 const getColorBtn = document.getElementById("get-color-scheme");
 const scheme = document.getElementById("scheme-select");
 
 function fetchColor() {
-  //To obtain the value of the hex color from color picker
+  //To obtain the value of the hex color from color picker without hex number
   const hexValue = document.getElementById("color-picker").value;
   const hexNumber = hexValue.replace("#", "");
 
@@ -26,10 +26,10 @@ function fetchColor() {
       method: "GET",
     }
   )
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       let hexNumberData = data.colors;
-      const colorData = hexNumberData.map((number) => number.hex.value);
+      const colorData = hexNumberData.map(number => number.hex.value);
       colorData.forEach((color, index) => {
         colorStrips[index].style.backgroundColor = color;
         hexNumberDisplays[index].textContent = color;
