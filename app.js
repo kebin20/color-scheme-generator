@@ -38,12 +38,12 @@ function fetchColor() {
         // Copy to clipboard function
         hexNumberDisplays[index].addEventListener("click", () => {
           document.execCommand("copy");
-          showToolTip()
+          showToolTip();
         });
 
         colorStrips[index].addEventListener("click", () => {
           document.execCommand("copy");
-          showToolTip()
+          showToolTip();
         });
 
         colorStrips[index].addEventListener("copy", (e) => {
@@ -56,7 +56,7 @@ function fetchColor() {
             console.log(e.clipboardData.getData("text"));
           }
         });
-        
+
         hexNumberDisplays[index].addEventListener("copy", (e) => {
           e.preventDefault();
           if (e.clipboardData) {
@@ -78,8 +78,7 @@ getColorBtn.addEventListener("click", () => {
 fetchColor();
 
 function showToolTip() {
-  document.getElementById("tooltip").classList.remove(".hidden");
-  document.getElementById("tooltip").classList.add(".tooltip");
+  document.getElementById("tooltip").style.display = "block";
 }
 
 //Alternative solution

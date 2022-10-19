@@ -98,9 +98,5 @@ button:active{
 }
 
 .tooltip{
-  display:flex;
-}
-
-.hidden{
-  display: none;
+  display:none;
 }
