@@ -56,6 +56,7 @@ function fetchColor() {
             console.log(e.clipboardData.getData("text"));
           }
         });
+        
         hexNumberDisplays[index].addEventListener("copy", (e) => {
           e.preventDefault();
           if (e.clipboardData) {
