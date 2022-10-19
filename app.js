@@ -1,11 +1,12 @@
 //Global variable
 const numbers = [1, 2, 3, 4, 5];
+let copied = false;
 
 // HTML Components
-const colorStrips = numbers.map(number =>
+const colorStrips = numbers.map((number) =>
   document.getElementById(`color-strip-${number}`)
 );
-const hexNumberDisplays = numbers.map(number =>
+const hexNumberDisplays = numbers.map((number) =>
   document.getElementById(`hex-number-${number}`)
 );
 const getColorBtn = document.getElementById("get-color-scheme");
@@ -26,13 +27,45 @@ function fetchColor() {
       method: "GET",
     }
   )
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       let hexNumberData = data.colors;
-      const colorData = hexNumberData.map(number => number.hex.value);
+      const colorData = hexNumberData.map((number) => number.hex.value);
       colorData.forEach((color, index) => {
         colorStrips[index].style.backgroundColor = color;
         hexNumberDisplays[index].textContent = color;
+
+        // Copy to clipboard function
+        hexNumberDisplays[index].addEventListener("click", () => {
+          document.execCommand("copy");
+          showToolTip()
+        });
+
+        colorStrips[index].addEventListener("click", () => {
+          document.execCommand("copy");
+          showToolTip()
+        });
+
+        colorStrips[index].addEventListener("copy", (e) => {
+          e.preventDefault();
+          if (e.clipboardData) {
+            e.clipboardData.setData(
+              "text/plain",
+              colorStrips[index].style.backgroundColor
+            );
+            console.log(e.clipboardData.getData("text"));
+          }
+        });
+        hexNumberDisplays[index].addEventListener("copy", (e) => {
+          e.preventDefault();
+          if (e.clipboardData) {
+            e.clipboardData.setData(
+              "text/plain",
+              hexNumberDisplays[index].textContent
+            );
+            console.log(e.clipboardData.getData("text"));
+          }
+        });
       });
     });
 }
@@ -40,6 +73,13 @@ function fetchColor() {
 getColorBtn.addEventListener("click", () => {
   fetchColor();
 });
+
+fetchColor();
+
+function showToolTip() {
+  document.getElementById("tooltip").classList.remove(".hidden");
+  document.getElementById("tooltip").classList.add(".tooltip");
+}
 
 //Alternative solution
 // for(i=0; i < 5; i++) {
