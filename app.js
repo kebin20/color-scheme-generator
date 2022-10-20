@@ -12,7 +12,7 @@ const hexNumberDisplays = numbers.map((number) =>
 const getColorBtn = document.getElementById("get-color-scheme");
 const scheme = document.getElementById("scheme-select");
 
-function fetchColor() {
+async function fetchColor() {
   //To obtain the value of the hex color from color picker without hex number
   const hexValue = document.getElementById("color-picker").value;
   const hexNumber = hexValue.replace("#", "");
@@ -21,54 +21,52 @@ function fetchColor() {
   let schemeValue = scheme.value;
   scheme.onchange = schemeValue;
 
-  fetch(
+  const res = await fetch(
     `https://www.thecolorapi.com/scheme?hex=${hexNumber}&mode=${schemeValue}`,
     {
       method: "GET",
     }
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      let hexNumberData = data.colors;
-      const colorData = hexNumberData.map((number) => number.hex.value);
-      colorData.forEach((color, index) => {
-        colorStrips[index].style.backgroundColor = color;
-        hexNumberDisplays[index].textContent = color;
+  );
+  const data = await res.json();
+  let hexNumberData = data.colors;
+  const colorData = hexNumberData.map((number) => number.hex.value);
+  colorData.forEach((color, index) => {
+    colorStrips[index].style.backgroundColor = color;
+    hexNumberDisplays[index].textContent = color;
 
-        // Copy to clipboard function
-        hexNumberDisplays[index].addEventListener("click", () => {
-          document.execCommand("copy");
-          showToolTip();
-        });
-
-        colorStrips[index].addEventListener("click", () => {
-          document.execCommand("copy");
-          showToolTip();
-        });
-
-        colorStrips[index].addEventListener("copy", (e) => {
-          e.preventDefault();
-          if (e.clipboardData) {
-            e.clipboardData.setData(
-              "text/plain",
-              colorStrips[index].style.backgroundColor
-            );
-            console.log(e.clipboardData.getData("text"));
-          }
-        });
-
-        hexNumberDisplays[index].addEventListener("copy", (e) => {
-          e.preventDefault();
-          if (e.clipboardData) {
-            e.clipboardData.setData(
-              "text/plain",
-              hexNumberDisplays[index].textContent
-            );
-            console.log(e.clipboardData.getData("text"));
-          }
-        });
-      });
+    // Copy to clipboard function
+    hexNumberDisplays[index].addEventListener("click", () => {
+      document.execCommand("copy");
+      showToolTip();
     });
+
+    colorStrips[index].addEventListener("click", () => {
+      document.execCommand("copy");
+      showToolTip();
+    });
+
+    colorStrips[index].addEventListener("copy", (e) => {
+      e.preventDefault();
+      if (e.clipboardData) {
+        e.clipboardData.setData(
+          "text/plain",
+          colorStrips[index].style.backgroundColor
+        );
+        console.log(e.clipboardData.getData("text"));
+      }
+    });
+
+    hexNumberDisplays[index].addEventListener("copy", (e) => {
+      e.preventDefault();
+      if (e.clipboardData) {
+        e.clipboardData.setData(
+          "text/plain",
+          hexNumberDisplays[index].textContent
+        );
+        console.log(e.clipboardData.getData("text"));
+      }
+    });
+  });
 }
 
 getColorBtn.addEventListener("click", () => {
