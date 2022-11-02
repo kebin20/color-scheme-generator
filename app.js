@@ -1,6 +1,5 @@
-//Global variable
+//  Global variable
 const numbers = [1, 2, 3, 4, 5];
-let copied = false;
 
 // HTML Components
 const colorStrips = numbers.map((number) =>
@@ -13,12 +12,12 @@ const getColorBtn = document.getElementById("get-color-scheme");
 const scheme = document.getElementById("scheme-select");
 
 async function fetchColor() {
-  //To obtain the value of the hex color from color picker without hex number
+  // To obtain the value of the hex color from color picker without hex number
   const hexValue = document.getElementById("color-picker").value;
   const hexNumber = hexValue.replace("#", "");
 
-  //To obtain values from select dropdown
-  let schemeValue = scheme.value;
+  // To obtain values from select dropdown
+  const schemeValue = scheme.value;
   scheme.onchange = schemeValue;
 
   const res = await fetch(
@@ -28,8 +27,8 @@ async function fetchColor() {
     }
   );
   const data = await res.json();
-  
-  let hexNumberData = data.colors;
+
+  const hexNumberData = data.colors;
   const colorData = hexNumberData.map((number) => number.hex.value);
   colorData.forEach((color, index) => {
     colorStrips[index].style.backgroundColor = color;
@@ -39,11 +38,17 @@ async function fetchColor() {
     hexNumberDisplays[index].addEventListener("click", () => {
       document.execCommand("copy");
       showToolTip();
+      setTimeout(() => {
+        removeToolTip();
+      }, 1000);
     });
 
     colorStrips[index].addEventListener("click", () => {
       document.execCommand("copy");
       showToolTip();
+      setTimeout(() => {
+        removeToolTip();
+      }, 1000);
     });
 
     colorStrips[index].addEventListener("copy", (e) => {
@@ -80,7 +85,11 @@ function showToolTip() {
   document.getElementById("tooltip").style.display = "block";
 }
 
-//Alternative solution
+function removeToolTip() {
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Alternative solution
 // for(i=0; i < 5; i++) {
 //   colorStrips[i].style.backgroundColor = colorData[i]
 // }

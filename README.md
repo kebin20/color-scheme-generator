@@ -16,7 +16,7 @@ However, after declaring it within the fetch function, I was able to get the hex
 Additional feature added:
 
 - Added the ability to be able to copy the hex colour to clipboard and copy the rgb values to copy clipboard after clicking on the colour itself. 
+- Enabled a tooltip to show user that the colour is successfully copied to clipboard.  
 
 Future implementation: 
 
-- Enable a tooltip to show user that the colour is successfully copied to clipboard. 

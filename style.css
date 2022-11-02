@@ -99,4 +99,13 @@ button:active{
 
 .tooltip{
   display:none;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 15px;
+  width: 35%;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-top: 0.7em;
+  padding: 0.5em;
+  color: turquoise;
 }
