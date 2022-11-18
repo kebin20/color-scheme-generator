@@ -4,7 +4,7 @@ An app that uses the Color API to generate different types of color schemes
 
 Key techniques learnt:
 
-- This project was a very good practice of extracting data from an API using the fetch API adn .then and extracting the necessary data needed to display the relevant information. Once again, it was also a good practice using .map() and .forEach when refactoring
+- This project was a very good practice of extracting data from an API using the fetch API and then and extracting the necessary data needed to display the relevant information. Once again, it was also a good practice using .map() and .forEach when refactoring
 
 Challenges faced:
 
